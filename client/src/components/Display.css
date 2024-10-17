@@ -1,0 +1,155 @@
+/* Base styling */
+body {
+    background-color: #1b1b2f;
+    color: #e0e0e0;
+    font-family: 'Orbitron', sans-serif; 
+    margin: 0;
+    padding: 0;
+  }
+  
+  /* Image grid styling */
+  .image-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    grid-gap: 20px;
+    grid-auto-rows: 350px;
+    padding: 20px;
+    margin: 20px;
+  }
+  
+  .image-list img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border: 2px solid #009ffd;
+    box-shadow: 0px 0px 15px rgba(0, 255, 242, 0.8);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  
+  .image-list img:hover {
+    transform: scale(1.1) rotate(2deg); /* Adds a zoom and slight rotation effect */
+    box-shadow: 0px 0px 30px rgba(255, 0, 242, 0.8);
+  }
+  
+  /* Centered content */
+  .center {
+    margin: 40px;
+    text-align: center;
+  }
+  
+  /* Button styling */
+  .button {
+    background-color: initial;
+    background-image: linear-gradient(135deg, #ff00cc, #333399);
+    border: 1px solid #ff00cc;
+    color: #ffffff;
+    padding: 10px 20px;
+    font-size: 18px;
+    font-weight: bold;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    transition: transform 0.3s, box-shadow 0.3s;
+    cursor: pointer;
+    box-shadow: 0px 0px 10px rgba(0, 255, 255, 0.7), 0px 0px 20px rgba(255, 0, 242, 0.7);
+  }
+  
+  .button:hover {
+    box-shadow: 0px 0px 20px rgba(255, 255, 0, 1), 0px 0px 30px rgba(255, 0, 242, 1);
+    transform: scale(1.1);
+  }
+  
+  /* Text input styling */
+  .address {
+    display: block;
+    margin: 20px auto;
+    height: 40px;
+    width: 350px;
+    padding: 10px;
+    text-align: center;
+    font-size: 16px;
+    border: 1px solid #ff00cc;
+    background-color: #222;
+    color: #ffffff;
+    box-shadow: 0px 0px 10px rgba(255, 0, 242, 0.5);
+    transition: box-shadow 0.3s, background-color 0.3s;
+  }
+  
+  .address:focus {
+    background-color: #333399;
+    box-shadow: 0px 0px 20px rgba(0, 255, 255, 1);
+    outline: none;
+  }
+  
+  /* Glitchy text effect */
+  @keyframes glitch {
+    0% {
+      text-shadow: 1px 1px rgba(255, 0, 255, 0.8), -1px -1px rgba(0, 255, 255, 0.8);
+    }
+    50% {
+      text-shadow: -2px 0px rgba(255, 0, 255, 0.8), 2px 0px rgba(0, 255, 255, 0.8);
+    }
+    100% {
+      text-shadow: 1px -1px rgba(255, 0, 255, 0.8), -1px 2px rgba(0, 255, 255, 0.8);
+    }
+  }
+  
+  /* Apply the glitch animation */
+  h1, h2 {
+    animation: glitch 1.5s infinite alternate;
+    color: #fff;
+    text-transform: uppercase;
+    font-size: 3em;
+  }
+  
+  /* Neon glow effect for text */
+  h1 {
+    text-shadow: 0 0 10px #ff00cc, 0 0 20px #ff00cc, 0 0 30px #ff00cc, 0 0 40px #ff00cc;
+  }
+  
+  /* Animation for a pulsing neon effect */
+  @keyframes pulse {
+    0% {
+      box-shadow: 0 0 10px rgba(255, 0, 255, 0.5), 0 0 20px rgba(0, 255, 255, 0.5);
+    }
+    50% {
+      box-shadow: 0 0 20px rgba(255, 0, 255, 1), 0 0 40px rgba(0, 255, 255, 1);
+    }
+    100% {
+      box-shadow: 0 0 10px rgba(255, 0, 255, 0.5), 0 0 20px rgba(0, 255, 255, 0.5);
+    }
+  }
+  
+  /* Apply pulse animation to buttons */
+  .button {
+    animation: pulse 1.5s infinite ease-in-out;
+  }
+  
+  /* Futuristic scrollbar styling */
+  ::-webkit-scrollbar {
+    width: 8px;
+  }
+  
+  ::-webkit-scrollbar-track {
+    background: #222;
+  }
+  
+  ::-webkit-scrollbar-thumb {
+    background: #ff00cc;
+    border-radius: 10px;
+  }
+  
+  ::-webkit-scrollbar-thumb:hover {
+    background: #009ffd;
+  }
+  
+  /* Make sure all elements are responsive */
+  @media screen and (max-width: 600px) {
+    .image-list {
+      grid-template-columns: 1fr;
+    }
+    .button {
+      font-size: 14px;
+      padding: 5px 15px;
+    }
+  }
+  
