@@ -1,10 +1,12 @@
 import Upload from "./artifacts/contracts/Upload.sol/Upload.json";
 import { useState, useEffect } from "react";
-import { ethers } from "ethers";
+import React from "react";
+
 import FileUpload from "./components/FileUpload";
 import Display from "./components/Display";
 import Modal from "./components/Modal";
 import "./App.css";
+const ethers = require("ethers");
 
 function App() {
   const [account, setAccount] = useState("");
@@ -28,7 +30,7 @@ function App() {
         const signer = provider.getSigner();
         const address = await signer.getAddress();
         setAccount(address);
-        let contractAddress = "Your Contract Address Here";
+        let contractAddress = "0x5FbDB2315678afecb367f032d93F642f64180aa3";
 
         const contract = new ethers.Contract(
           contractAddress,
@@ -45,7 +47,7 @@ function App() {
     provider && loadProvider();
   }, []);
   return (
-    <>
+    <div>
       {!modalOpen && (
         <button className="share" onClick={() => setModalOpen(true)}>
           Share
@@ -71,7 +73,7 @@ function App() {
         ></FileUpload>
         <Display contract={contract} account={account}></Display>
       </div>
-    </>
+    </div>
   );
 }
 

@@ -1,10 +1,11 @@
-// SPDX-License-Identifier: UNLICENSED
+// SPDX-License-Identifier: GPL-3.0
+
 pragma solidity ^0.8.27;
 
 contract Upload {
     struct Access {
         address user;
-        bool access;
+        bool access; //true or false
     }
     mapping(address => string[]) value;
     mapping(address => mapping(address => bool)) ownership;
@@ -12,27 +13,28 @@ contract Upload {
     mapping(address => mapping(address => bool)) previousData;
 
     function add(address _user, string memory url) external {
-        value[msg.sender].push(url);
+        value[_user].push(url);
     }
 
-    function allow(address _user) external {
-        ownership[msg.sender][_user] = true;
-        if (previousData[msg.sender][_user]) {
+    function allow(address user) external {
+        //def
+        ownership[msg.sender][user] = true;
+        if (previousData[msg.sender][user]) {
             for (uint i = 0; i < accessList[msg.sender].length; i++) {
-                if (accessList[msg.sender][i].user == _user) {
-                    accessList[msg.sender].push(Access(_user, true));
+                if (accessList[msg.sender][i].user == user) {
+                    accessList[msg.sender][i].access = true;
                 }
             }
         } else {
-            accessList[msg.sender].push(Access(_user, true));
-            previousData[msg.sender][_user] = true;
+            accessList[msg.sender].push(Access(user, true));
+            previousData[msg.sender][user] = true;
         }
     }
 
-    function deny(address _user) external {
-        ownership[msg.sender][_user] = false;
+    function disallow(address user) public {
+        ownership[msg.sender][user] = false;
         for (uint i = 0; i < accessList[msg.sender].length; i++) {
-            if (accessList[msg.sender][i].user == _user) {
+            if (accessList[msg.sender][i].user == user) {
                 accessList[msg.sender][i].access = false;
             }
         }
@@ -40,13 +42,13 @@ contract Upload {
 
     function display(address _user) external view returns (string[] memory) {
         require(
-            _user == msg.sender || ownership[msg.sender][_user],
-            "You are not allowed to view this data"
+            _user == msg.sender || ownership[_user][msg.sender],
+            "You don't have access"
         );
         return value[_user];
     }
 
-    function shareAcess() external view returns (Access[] memory) {
+    function shareAccess() public view returns (Access[] memory) {
         return accessList[msg.sender];
     }
 }

@@ -1,5 +1,6 @@
 import { useState } from "react";
 import "./Display.css";
+import React from "react";
 const Display = ({ contract, account }) => {
   const [data, setData] = useState("");
   const getdata = async () => {
@@ -40,7 +41,7 @@ const Display = ({ contract, account }) => {
     }
   };
   return (
-    <>
+    <div>
       <div className="image-list">{data}</div>
       <input
         type="text"
@@ -50,7 +51,7 @@ const Display = ({ contract, account }) => {
       <button className="center button" onClick={getdata}>
         Get Data
       </button>
-    </>
+    </div>
   );
 };
 export default Display;
