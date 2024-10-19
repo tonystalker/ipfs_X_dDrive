@@ -1,130 +1,84 @@
-/* Modal background styling */
 .modalBackground {
-    width: 100vw;
-    height: 100vh;
-    background-color: rgba(0, 0, 0, 0.8); /* Darken background for cyberpunk vibe */
-    position: fixed;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    z-index: 999;
-    backdrop-filter: blur(10px); /* Adds a blur effect */
-  }
-  
-  /* Modal container styling */
-  .modalContainer {
-    width: 500px;
-    height: 250px;
-    border-radius: 15px;
-    background-color: #1b1b2f; /* Darker background for modal */
-    box-shadow: 0px 0px 20px rgba(0, 255, 255, 0.7), 0px 0px 30px rgba(255, 0, 242, 0.7); /* Neon glow effect */
-    display: flex;
-    flex-direction: column;
-    padding: 25px;
-    border: 2px solid #00ff87; /* Neon green border */
-    color: #ffffff; /* Text color */
-    transition: transform 0.3s ease-in-out; /* Smooth animation */
-  }
-  
-  .modalContainer:hover {
-    transform: scale(1.05); /* Slightly zooms in the modal on hover */
-  }
-  
-  /* Title styling */
-  .title {
-    font-size: 2rem;
-    color: #00ff87; /* Neon green text */
-    text-transform: uppercase;
-    text-align: center;
-    margin-bottom: 10px;
-    letter-spacing: 1.5px;
-  }
-  
-  /* Close button styling */
-  .titleCloseBtn {
-    display: flex;
-    justify-content: flex-end;
-  }
-  
-  .titleCloseBtn button {
-    background-color: transparent;
-    border: none;
-    font-size: 1.5rem;
-    color: #ff00cc; /* Neon pink color */
-    cursor: pointer;
-    transition: transform 0.3s, color 0.3s ease-in-out;
-  }
-  
-  .titleCloseBtn button:hover {
-    color: #00ff87; /* Neon green on hover */
-    transform: scale(1.2); /* Slightly enlarge on hover */
-  }
-  
-  /* Modal body styling */
-  .modalContainer .body {
-    flex: 50%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 1.5rem;
-    text-align: center;
-    color: #ffffff;
-  }
-  
-  /* Modal footer buttons */
-  .modalContainer .footer {
-    flex: 20%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-  
-  .modalContainer .footer button {
-    width: 120px;
-    height: 40px;
-    margin: 10px;
-    border: none;
-    background-color: #00ff87; /* Neon green */
-    color: #1b1b2f;
-    border-radius: 10px;
-    font-size: 16px;
-    cursor: pointer;
-    transition: box-shadow 0.3s ease-in-out, transform 0.3s ease-in-out;
-    box-shadow: 0px 0px 10px rgba(0, 255, 135, 0.5), 0px 0px 20px rgba(0, 255, 255, 0.7); /* Neon glow */
-  }
-  
-  .modalContainer .footer button:hover {
-    box-shadow: 0px 0px 20px rgba(0, 255, 135, 1), 0px 0px 30px rgba(0, 255, 255, 1); /* Intense glow on hover */
-    transform: scale(1.1); /* Scale up on hover */
-  }
-  
-  /* Cancel button styling */
-  #cancelBtn {
-    background-color: #ff005a; /* Neon red */
-  }
-  
-  #cancelBtn:hover {
-    box-shadow: 0px 0px 20px rgba(255, 0, 90, 1), 0px 0px 30px rgba(255, 0, 255, 1);
-  }
-  
-  /* Text input */
-  .address {
-    display: block;
-    margin: 10px auto;
-    height: 40px;
-    width: 350px;
-    padding: 10px;
-    text-align: center;
-    border: 2px solid #ff00cc; /* Neon pink border */
-    background-color: #1b1b2f;
-    color: #ffffff;
-    box-shadow: 0px 0px 10px rgba(255, 0, 255, 0.5);
-    transition: background-color 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
-  }
-  
-  input[type="text"]:focus {
-    background-color: #333399; /* Cyberpunk blue */
-    box-shadow: 0px 0px 20px rgba(0, 255, 255, 1); /* Neon cyan glow */
-    outline: none;
-  }
-  
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.2);
+  position: fixed;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.modalContainer {
+  width: 500px;
+  height: 200px;
+  border-radius: 12px;
+  background-color: white;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  display: flex;
+  flex-direction: column;
+  padding: 25px;
+}
+
+.modalContainer {
+  display: inline-block;
+  text-align: center;
+}
+.title {
+  display: inline-block;
+  text-align: center;
+}
+
+.titleCloseBtn {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.titleCloseBtn button {
+  background-color: transparent;
+  border: none;
+  font-size: 1px;
+  cursor: pointer;
+}
+
+.modalContainer .body {
+  flex: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.7rem;
+  text-align: center;
+}
+
+.modalContainer .footer {
+  flex: 20%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.modalContainer .footer button {
+  width: 100px;
+  height: 35px;
+  margin: 10px;
+  border: none;
+  background-color: cornflowerblue;
+  color: white;
+  border-radius: 8px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+#cancelBtn {
+  background-color: crimson;
+}
+.address {
+  display: block;
+  margin: auto;
+  height: 30px;
+  width: 330px;
+  text-align: center;
+}
+
+input[type="text"]:focus {
+  background-color: lightblue;
+}
