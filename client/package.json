@@ -6,14 +6,21 @@
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
-    "axios": "^1.7.7",
+    "axios": "^0.21.1",
+    "buffer": "^6.0.3",
+    "crypto-browserify": "^3.12.0",
     "customize-cra": "^1.0.0",
     "dotenv": "^16.4.5",
     "ethers": "^6.13.4",
+    "os-browserify": "^0.3.0",
+    "path-browserify": "^1.0.1",
+    "process": "^0.11.10",
     "react": "^18.3.1",
     "react-app-rewired": "^2.2.1",
     "react-dom": "^18.3.1",
-    "react-scripts": "^5.0.1"
+    "react-scripts": "^5.0.1",
+    "stream-browserify": "^3.0.0",
+    "webpack": "^5.95.0"
   },
   "scripts": {
     "start": "react-app-rewired start",
@@ -22,6 +29,7 @@
   },
   "devDependencies": {
     "@babel/core": "^7.25.8",
+    "@babel/plugin-proposal-private-property-in-object": "^7.21.11",
     "@babel/preset-env": "^7.25.8",
     "babel-loader": "^9.2.1"
   },

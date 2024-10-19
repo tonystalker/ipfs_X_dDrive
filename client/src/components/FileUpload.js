@@ -2,6 +2,7 @@ import { useState } from "react";
 import axios from "axios";
 import "./FileUpload.css";
 import React from "react";
+require("dotenv").config();
 const FileUpload = ({ contract, account, provider }) => {
   const [file, setFile] = useState(null);
   const [fileName, setFileName] = useState("No image selected");

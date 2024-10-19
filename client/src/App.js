@@ -15,37 +15,54 @@ function App() {
   const [modalOpen, setModalOpen] = useState(false);
 
   useEffect(() => {
-    const provider = new ethers.providers.Web3Provider(window.ethereum);
-
     const loadProvider = async () => {
-      if (provider) {
-        window.ethereum.on("chainChanged", () => {
-          window.location.reload();
-        });
+      if (typeof window.ethereum !== "undefined") {
+        try {
+          const newProvider = new ethers.providers.Web3Provider(
+            window.ethereum
+          );
 
-        window.ethereum.on("accountsChanged", () => {
-          window.location.reload();
-        });
-        await provider.send("eth_requestAccounts", []);
-        const signer = provider.getSigner();
-        const address = await signer.getAddress();
-        setAccount(address);
-        let contractAddress = "0x5FbDB2315678afecb367f032d93F642f64180aa3";
+          // Request access to the user's MetaMask accounts
+          await newProvider.send("eth_requestAccounts", []);
 
-        const contract = new ethers.Contract(
-          contractAddress,
-          Upload.abi,
-          signer
-        );
-        //console.log(contract);
-        setContract(contract);
-        setProvider(provider);
+          // Get the signer (used to sign transactions)
+          const signer = newProvider.getSigner();
+
+          // Get the user's address
+          const address = await signer.getAddress();
+          setAccount(address);
+
+          // Set the contract
+          const contractAddress = "0xb4D4EC74539d391C18Bb677d1310c5AF3e892E53";
+          const newContract = new ethers.Contract(
+            contractAddress,
+            Upload.abi,
+            signer
+          );
+
+          // Update states
+          setContract(newContract);
+          setProvider(newProvider);
+
+          // Handle chain and account changes
+          window.ethereum.on("chainChanged", () => {
+            window.location.reload();
+          });
+
+          window.ethereum.on("accountsChanged", () => {
+            window.location.reload();
+          });
+        } catch (error) {
+          console.error("Error connecting to MetaMask", error);
+        }
       } else {
-        console.error("Metamask is not installed");
+        console.error("MetaMask is not installed!");
       }
     };
-    provider && loadProvider();
+
+    loadProvider();
   }, []);
+
   return (
     <div>
       {!modalOpen && (
@@ -58,10 +75,10 @@ function App() {
       )}
 
       <div className="App">
-        <h1 style={{ color: "white" }}>Gdrive 3.0</h1>
-        <div class="bg"></div>
-        <div class="bg bg2"></div>
-        <div class="bg bg3"></div>
+        <h1 style={{ color: "white" }}>IPFS_XdDrive</h1>
+        <div className="bg"></div>
+        <div className="bg bg2"></div>
+        <div className="bg bg3"></div>
 
         <p style={{ color: "white" }}>
           Account : {account ? account : "Not connected"}
